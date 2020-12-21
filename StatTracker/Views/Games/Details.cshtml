@@ -1,0 +1,67 @@
+﻿@model StatTracker.Models.Game
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+</div>
+@using (Html.BeginForm("EditStats", "Games"))
+{
+<div class="form-horizontal">
+    <h4>Stats</h4>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group" id="addRowsHere">
+        @if (Model.Stats == null || Model.Stats.Count == 0)
+        {
+            <p>No stats have been added yet.</p>
+        }
+        else
+        {
+            foreach (KeyValuePair<string, float> entry in Model.Stats)
+            {
+                <input type="text" class="form-control" v-model="act" name="stats" value="@entry.Key">
+            }
+        }
+
+
+
+
+
+
+    </div>
+    <input type="button" class="btn btn-default" id="more_fields" value="Add Stat" />
+    @Html.HiddenFor(model => model.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+</div>
+
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+<script>
+    document.getElementById("more_fields").onclick = function () {
+   
+
+        //input
+        var newInput = document.createElement("input");
+        newInput.setAttribute("type", "text");
+        newInput.setAttribute("class", "form-control");
+        newInput.setAttribute("v-model", "act");
+        newInput.setAttribute("name", "stats");
+
+        var element = document.getElementById("addRowsHere");
+        element.appendChild(newInput);
+    };
+
+</script>
