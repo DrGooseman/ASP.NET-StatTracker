@@ -21,8 +21,8 @@ namespace StatTracker.Controllers
             return View(db.Games.ToList());
         }
 
-        // GET: Games/Details/5
-        public ActionResult Details(int? id)
+        // GET: Games/Stats/5
+        public ActionResult Stats(int? id)
         {
             if (id == null)
             {
@@ -34,6 +34,18 @@ namespace StatTracker.Controllers
                 return HttpNotFound();
             }
             return View(game);
+        }
+
+        // GET: Games/Stats/5
+        public ActionResult Players(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+           
+            IEnumerable<Player> players = db.Players.Where(x => x.GameId == id).ToList();
+            return View(players);
         }
 
         // GET: Games/Create
@@ -101,7 +113,6 @@ namespace StatTracker.Controllers
                 if (stat.Length > 0 && !newStatsDictionary.ContainsKey(stat))
                     newStatsDictionary.Add(stat, 0);
             }
-               // System.Diagnostics.Debug.WriteLine("{0} {1}", key, nvc.GetValues(key));
 
             Game gameInDb = db.Games.Find(game.Id);
             gameInDb.Stats = newStatsDictionary;

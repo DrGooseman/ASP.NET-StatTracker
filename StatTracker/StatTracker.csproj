@@ -139,6 +139,10 @@
     <Compile Include="Migrations\202012211750573_CreateStatsString.Designer.cs">
       <DependentUpon>202012211750573_CreateStatsString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012212205478_UpdatePlayer.cs" />
+    <Compile Include="Migrations\202012212205478_UpdatePlayer.Designer.cs">
+      <DependentUpon>202012212205478_UpdatePlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\StatTrackerContext.cs" />
     <Compile Include="Models\Game.cs" />
@@ -183,10 +187,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Games\Create.cshtml" />
     <Content Include="Views\Games\Delete.cshtml" />
-    <Content Include="Views\Games\Details.cshtml" />
+    <Content Include="Views\Games\Stats.cshtml" />
     <Content Include="Views\Games\Edit.cshtml" />
     <Content Include="Views\Games\Index.cshtml" />
     <Content Include="Views\Games\Details - Copy.cshtml" />
+    <Content Include="Views\Games\Players.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -210,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012211750573_CreateStatsString.resx">
       <DependentUpon>202012211750573_CreateStatsString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012212205478_UpdatePlayer.resx">
+      <DependentUpon>202012212205478_UpdatePlayer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

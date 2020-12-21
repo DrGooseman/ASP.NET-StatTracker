@@ -10,16 +10,16 @@ namespace StatTracker.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string statsString { get; set; }
+        public string StatsString { get; set; }
         public Dictionary<string, float> Stats
         {
             get
             {
-                return JsonConvert.DeserializeObject<Dictionary<string, float>>(statsString);
+                return JsonConvert.DeserializeObject<Dictionary<string, float>>(StatsString);
             }
             set
             {
-                statsString = JsonConvert.SerializeObject(value);
+                StatsString = JsonConvert.SerializeObject(value);
             }
         }
     }
